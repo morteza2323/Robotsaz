@@ -1,0 +1,117 @@
+@use '../styles/variables' as *;
+
+.gallery {
+  /* اگر والد، grid باشد: */
+  justify-self: center;        /* 🔹 گالری را وسط ستون می‌آورد */
+  /* اگر والد، flex باشد: این دو خط هم مفیدند */
+  align-self: start;
+  /* چیدمان داخلی */
+  display: grid;
+  justify-items: center;       /* 🔹 محتوای داخلی هم وسط شود */
+  gap: 12px;
+}
+
+.main {
+  border: 1px solid $border;
+  border-radius: 12px;
+  overflow: hidden;
+  background: $bg-soft;
+  cursor: zoom-in;
+
+  width: min(100%, 420px);     /* 🔹 اندازه معقول */
+  margin-inline: auto;         /* 🔹 در هر حال وسط */
+
+  img {
+    display: block;            /* 🔹 باگ فاصله‌ی اضافی را می‌گیرد */
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+}
+
+.thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;     /* 🔹 وسط */
+  gap: 10px;
+}
+.thumb {
+  display: block;              /* 🔹 برای جلوگیری از تاثیر متن/line-height */
+  width: 90px;
+  height: 70px;
+  border: 1px solid $border;
+  border-radius: 10px;
+  overflow: hidden;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: transform .15s ease, border-color .15s ease;
+
+  img {
+    display: block;            /* 🔹 وسط‌چینی تمیز */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:hover { transform: translateY(-2px); border-color: $primary; }
+}
+
+
+/* Overlay / Modal */
+.overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,.6);
+  display: grid; place-items: center;
+  padding: 24px;
+  animation: fadeIn .18s ease both;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modal {
+  position: relative;
+  max-width: min(92vw, 1080px);
+  max-height: 90vh;
+  border-radius: 14px;
+  background: $bg;
+  border: 1px solid $border;
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  padding: 14px;
+  display: grid; place-items: center;
+}
+
+.full {
+  max-width: 80vw;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 10px;
+  display: block;
+  background: $bg-soft;
+}
+.full { max-width: 80vw; max-height: 70vh; object-fit: contain; border-radius: 10px; background: $bg-soft; }
+
+.close {
+  position: absolute; top: 8px; left: 10px;
+  border: 0; background: transparent; color: $text; font-size: 24px; line-height: 1; cursor: pointer;
+  opacity: .8; transition: opacity .15s ease;
+  &:hover { opacity: 1; }
+}
+
+.nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba($bg, .9); color: $text; border: 1px solid $border;
+  width: 40px; height: 40px; border-radius: 10px; cursor: pointer;
+  display: grid; place-items: center; font-size: 26px; line-height: 1;
+  transition: background .15s ease, transform .05s ease, box-shadow .15s ease;
+  &:hover { background: $bg; box-shadow: 0 6px 18px rgba(0,0,0,.15); }
+  &:active { transform: translateY(-50%) scale(.98); }
+}
+.prev { right: 12px; }
+.next { left: 12px; }
+
+.counter {
+  position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+  background: rgba($bg, .85); color: $text; border: 1px solid $border;
+  border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 700;
+}

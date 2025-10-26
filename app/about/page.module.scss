@@ -1,0 +1,124 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.about {
+  background: $bg;
+  padding: 64px 0;
+
+  h1, h2 { text-align: center; }
+  h1 { margin-bottom: 16px; }
+  p { margin: 12px 0; }
+}
+.leadWrapper
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* لید و هایلایت */
+.lead {
+  font-size: clamp(16px, 1.15vw, 18px);
+  color: $muted;
+  max-width: 70ch;
+  margin: 0 auto 24px;
+  text-align: center;
+}
+.mark {
+  background: rgba($primary, .10);
+  padding: 0 .35em;
+  border-radius: 6px;
+}
+
+/* KPIs */
+.kpis {
+  display: grid; gap: 14px; margin: 24px 0 36px;
+  grid-template-columns: repeat(2, 1fr);
+  @media (min-width: 768px){ grid-template-columns: repeat(4, 1fr); }
+
+  .item { @include card; padding: 18px; text-align: center; }
+  .num { font-weight: 800; font-size: 22px; line-height: 1; margin-bottom: 6px; }
+  .label { color: $muted; font-size: 13px; }
+}
+
+/* Highlights */
+.highlights {
+  display: grid; gap: 18px; margin: 36px 0;
+  grid-template-columns: 1fr;
+  @media (min-width: 992px){ grid-template-columns: repeat(3, 1fr); }
+
+  .card { @include card; padding: 18px; }
+  .icon { font-size: 20px; margin-left: 8px; }
+  .title { font-weight: 700; margin-bottom: 6px; }
+  .desc { color: $muted; font-size: 14px; }
+}
+
+/* Timeline */
+.timeline {
+  margin: 24px 0 40px; position: relative; padding-right: 14px;
+
+  &::before {
+    content:""; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: $border;
+  }
+
+  .row { position: relative; padding: 10px 18px 10px 0; }
+  .row::before {
+    content:""; position: absolute; left: 3px; top: 20px;
+    width: 8px; height: 8px; border-radius: 50%; background: $primary;
+  }
+
+  .year { font-weight: 800; margin-left: 20px; }
+  .text { color: $muted; margin-left: 1rem; }
+}
+
+/* Team */
+.team {
+  display: grid; gap: 32px;
+  margin: 20px 0 36px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.member {
+  @include card;
+  padding: 24px;
+  text-align: center;
+
+  img {
+    width: 120px; height: 120px; border-radius: 50%;
+    object-fit: cover; margin: 0 auto 16px; border: 2px solid $border;
+  }
+  h3 { margin-bottom: 6px; font-size: 18px; }
+}
+
+/* Callout */
+.callout {
+  @include card;
+  padding: 18px;
+  border-left: 4px solid $primary;
+  margin: 28px 0 0;
+
+  p { margin: 0; color: $text; }
+  .sub { color: $muted; font-size: 13px; margin-top: 8px; }
+}
+
+/* CTA پایانی */
+.ctaSection {
+  background: $bg-soft;
+  padding: 56px 0;
+  text-align: center;
+
+  h2 { margin-bottom: 8px; }
+  .ctaText
+  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.ctaBtn {
+  @include button("solid");
+  display: inline-block;
+  margin-top: 14px;
+  
+}

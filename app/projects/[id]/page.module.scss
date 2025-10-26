@@ -1,0 +1,363 @@
+@use "../../styles/variables" as *;
+
+/* ==== کلیات صفحه ==== */
+.project a 
+{
+  text-decoration: none;
+}
+.project {
+  padding-bottom: 60px;
+}
+
+/* ==== بالای صفحه (ناوبری و عنوان) ==== */
+.topbar {
+  background: linear-gradient(135deg, #f8faff 0%, #eef3ff 100%);
+  border-bottom: 1px solid $border;
+  padding: 24px 0;
+
+  .breadcrumbs {
+    font-size: 14px;
+    color: $muted;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    a {
+      color: $primary;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .sep {
+      color: $muted;
+    }
+
+    .current {
+      font-weight: 700;
+      color: $text;
+    }
+  }
+
+  .headRow {
+    margin-top: 8px;
+  }
+
+  .title {
+    font-size: 26px;
+    font-weight: 800;
+    margin: 6px 0 10px;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+
+    &.delivered {
+      background: #38b000;
+    }
+
+    &.in-progress {
+      background: #f6b400;
+    }
+
+    &.prototype {
+      background: #007bff;
+    }
+  }
+}
+
+/* ==== گالری + سایدبار ==== */
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  margin-top: 24px;
+
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==== سایدبار ==== */
+
+.box {
+  background: #fff;
+  border: 1px solid $border;
+  border-radius: 16px;
+  padding: 16px;
+  position: sticky;
+  top: 80px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.hr {
+  height: 1px;
+  background: $border;
+  margin: 10px 0 14px;
+  border-radius: 1px;
+}
+
+/* کارت اطلاعات (سال و تگ‌ها) */
+.metaCard {
+  display: grid;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid $border;
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.metaRow {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 8px;
+  align-items: start;
+}
+
+.metaIcon {
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  line-height: 1;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba($primary, 0.08);
+  color: $primary;
+  border: 1px solid rgba($primary, 0.25);
+}
+
+.metaLabel {
+  font-size: 12px;
+  color: $muted;
+  margin-bottom: 2px;
+}
+
+.metaValue {
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.tagsWrap {
+  display: grid;
+  gap: 6px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba($primary, 0.06);
+  border: 1px solid rgba($primary, 0.25);
+  color: $primary;
+  font-weight: 700;
+  font-size: 12px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+
+  &::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $primary;
+    box-shadow: 0 0 0 2px rgba($primary, 0.15);
+  }
+
+  &:hover {
+    background: rgba($primary, 0.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+  }
+}
+
+/* دکمه‌ها در سایدبار */
+.actions {
+  margin-top: 14px;
+  display: flex;
+  gap: 8px;
+}
+
+.btnPrimary {
+  background: $primary;
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    background: darken($primary, 6%);
+  }
+}
+
+.btnGhost {
+  background: #fff;
+  color: $primary;
+  border: 1px solid $primary;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    background: $primary;
+    color: #fff;
+  }
+}
+
+/* ==== توضیحات پروژه (overview) ==== */
+.overviewBox {
+  margin-top: 20px;
+  background: #fff;
+  border: 1px solid $border;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+
+  h2 {
+    margin-top: 0;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  p {
+    margin: 0;
+    color: $text;
+    line-height: 1.8;
+    font-size: 15px;
+  }
+}
+
+/* ==== جدول مشخصات فنی ==== */
+.specs {
+  margin-top: 24px;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+}
+
+.table {
+  border: 1px solid $border;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  border-bottom: 1px solid $border;
+  background: $bg;
+
+  &:nth-child(even) {
+    background: $bg-soft;
+  }
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.k {
+  padding: 10px;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.v {
+  padding: 10px;
+  color: $text;
+  font-size: 14px;
+}
+
+/* ==== پروژه‌های مرتبط ==== */
+.related {
+  margin-top: 32px;
+}
+
+.relatedHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 800;
+  }
+
+  .moreLink {
+    color: $primary;
+    font-weight: 700;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.grid3 {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+/* ==== CTA نهایی ==== */
+.ctaSection {
+  margin: 40px 0;
+  text-align: center;
+
+  h2 {
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  p {
+    color: $muted;
+    margin: 6px 0 16px;
+  }
+
+  .ctaBtn {
+    background: $primary;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      background: darken($primary, 6%);
+    }
+  }
+}

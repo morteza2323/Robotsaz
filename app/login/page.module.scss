@@ -1,0 +1,94 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.login {
+  min-height: calc(100dvh - 120px);
+  display: grid; align-items: center;
+  background:
+    radial-gradient(80% 120% at 50% -10%, rgba($primary,.12), transparent 60%),
+    linear-gradient(180deg, $bg 0%, $bg-soft 100%);
+  padding: 40px 0 64px;
+}
+
+.card {
+  @include card;
+  width: min(100%, 520px);
+  margin: 0 auto;
+  padding: 22px 20px;
+}
+
+.title { margin: 0 0 6px; text-align: center; font-size: 22px; font-weight: 800; }
+.sub   { text-align: center; color: $muted; margin: 0 0 16px; }
+
+.row { display: grid; gap: 6px; margin-bottom: 12px; }
+
+/* 🔧 فقط در scope ماژول */
+.row label { font-weight: 600; }
+
+.row input,
+.passWrap input {
+  border: 1px solid $border;
+  border-radius: 12px;
+  padding: 12px 12px;
+  background: $bg;
+  outline: none;
+  transition: border .15s ease, box-shadow .15s ease;
+
+  &:focus { border-color: $primary; box-shadow: 0 0 0 3px rgba($primary,.15); }
+}
+
+.passWrap {
+  position: relative;
+
+  .toggle {
+    position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+    border: 0; background: transparent; cursor: pointer; font-size: 16px; opacity: .7;
+    &:hover { opacity: 1; }
+  }
+}
+
+.rowInline {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 8px 0 14px;
+}
+.remember { color: $text; display: inline-flex; align-items: center; gap: 6px; }
+.linkMuted {
+  color: $muted; text-decoration: none;
+  &:hover { color: $primary; }
+}
+
+.btnPrimary { @include button("solid"); width: 100%; }
+.btnGhost   { @include button("ghost"); width: 100%; }
+
+.error {
+  margin-top: 10px;
+  color: #dc2626;
+  font-size: 14px;
+}
+
+/* جداکننده "یا" */
+.hrText {
+  display: grid; place-items: center; margin: 14px 0;
+  position: relative; text-align: center;
+
+  &::before {
+    content: ""; position: absolute; right: 0; left: 0; top: 50%;
+    height: 1px; background: $border;
+  }
+
+  span {
+    position: relative; padding: 0 10px; background: $bg; color: $muted; font-size: 12px;
+  }
+}
+
+.oauthRow {
+  display: grid; grid-template-columns: 1fr; gap: 10px;
+  @media (min-width: 560px){ grid-template-columns: 1fr 1fr; }
+}
+
+.bottomText {
+  text-align: center; margin-top: 12px; color: $muted;
+}
+.linkPrimary {
+  color: $primary; text-decoration: none;
+  &:hover { text-decoration: underline; }
+}

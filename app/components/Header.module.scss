@@ -1,0 +1,102 @@
+@use "../styles/variables" as *; // $primary, $bg, $text, $border, $muted
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: $bg;
+  border-bottom: 1px solid $border;
+  backdrop-filter: saturate(120%) blur(4px);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  flex-wrap: wrap;
+}
+
+/* لوگو */
+.logo {
+  color: $text;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: -0.2px;
+  transition: color .15s ease;
+
+  &:hover { color: $primary; }
+}
+
+/* ناوبری */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+
+  a {
+    color: $text;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 8px;
+    border-radius: 8px;
+    transition: color .15s ease, background .15s ease;
+
+    &:hover { color: $primary; background: rgba($primary, .06); }
+  }
+
+  /* اگر خواستی فاصلهٔ دکمه تماس بیشتر شه */
+  :global(.btn-ghost) {
+    margin-right: 6px;
+  }
+}
+
+/* اکشن‌ها (ورود/خروج) */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 2rem;
+}
+
+/* دکمه Outline آبیِ پایه (پس‌زمینه سفید) */
+%outlineBlue {
+  appearance: none;
+  background: #fff;
+  color: $primary;
+  border: 1.5px solid $primary;
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, box-shadow .15s ease, transform .04s ease;
+  line-height: 1;
+
+  &:hover {
+    background: $primary;
+    color: #fff;
+    box-shadow: 0 6px 18px rgba($primary, .18);
+  }
+  &:active { transform: translateY(1px); }
+  &:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba($primary, .18); }
+}
+
+/* دکمه‌های ورود/خروج با همان استایل تماس */
+.loginBtn  { @extend %outlineBlue; }
+.logoutBtn { @extend %outlineBlue; color: $primary; }
+
+/* ریسپانسیو نرم */
+@media (max-width: 900px) {
+  .nav { order: 3; width: 100%; justify-content: center; }
+  .actions { order: 2; }
+}
+
+@media (max-width: 520px) {
+  .row { gap: 10px; }
+  .nav { gap: 10px; }
+  .loginBtn, .logoutBtn { padding: 8px 12px; font-size: 13px; }
+}

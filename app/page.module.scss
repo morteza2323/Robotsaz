@@ -1,0 +1,77 @@
+@use './styles/variables' as *;
+@use './styles/mixins' as *;
+
+.home {
+  background: $bg;
+}
+
+/* تیترهای وسط‌چین کوتاه */
+.center { text-align: center; }
+
+/* Features */
+.features {
+  display: grid; gap: 16px; margin-top: 16px;
+  grid-template-columns: 1fr;
+  @media (min-width: 992px){ grid-template-columns: repeat(3, 1fr); }
+}
+.feature {
+  @include card; padding: 18px; text-align: center;
+  h3 { margin: 6px 0; font-size: 18px; }
+}
+.icon {
+  font-size: 24px; display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba($primary,.10); color: $text; margin-bottom: 6px;
+}
+
+/* KPI strip */
+.kpiSection { background: $bg-soft; padding: 32px 0; }
+.kpis {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(2, 1fr);
+  @media (min-width: 768px){ grid-template-columns: repeat(4, 1fr); }
+}
+.kpi {
+  @include card; padding: 14px; text-align: center;
+  .num { font-weight: 800; font-size: 22px; line-height: 1; }
+  .label { color: $muted; font-size: 13px; }
+}
+
+/* Products teaser */
+.headerRow {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px;
+}
+.moreLink {
+  color: $primary; text-decoration: none; border: 1px solid $primary; border-radius: 10px; padding: 6px 10px;
+  &:hover { background: rgba($primary,.08); }
+}
+.grid3 {
+  display: grid; gap: 20px;
+  grid-template-columns: 1fr;
+  @media (min-width: 640px){ grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 1024px){ grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Projects */
+.projects {
+  display: grid; gap: 16px; margin-top: 12px;
+  grid-template-columns: 1fr;
+  @media (min-width: 992px){ grid-template-columns: repeat(3, 1fr); }
+}
+.projectCard {
+  @include card; padding: 18px; text-decoration: none; color: $text; transition: transform .15s ease;
+  &:hover { transform: translateY(-2px); }
+  h3 { margin: 0 0 6px; font-size: 18px; }
+}
+.projectLink {
+  color: $primary; text-decoration: underline; text-underline-offset: 3px; font-size: 14px;
+}
+
+/* CTA */
+.ctaSection {
+  background: $bg-soft; padding: 56px 0; text-align: center;
+  h2 { margin-bottom: 8px; }
+}
+.ctaBtn {
+  @include button("solid"); display: inline-block; margin-top: 10px;
+}

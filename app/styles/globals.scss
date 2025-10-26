@@ -1,0 +1,36 @@
+@use './variables' as *;
+@use './mixins' as *;
+@use './reset';
+
+:root {
+  --primary: #{$primary};
+  --accent: #{$accent};
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+
+.container { @include container; text-align: left;}
+.section { padding: 64px 0; }
+.section--soft { background: $bg-soft; }
+html, body {
+  direction: ltr;   /* ⬅️ جهت چپ‌به‌راست */
+  text-align: left; /* ⬅️ پیش‌فرض چپ‌چین */
+  font-family: var(--font-sans);
+}
+
+h1,h2,h3 { margin: 0 0 12px; line-height: 1.25; }
+h1 { font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; }
+h2 { font-size: clamp(22px, 2.2vw, 32px); font-weight: 700; }
+h3 { font-size: 18px; font-weight: 700; }
+
+.text-muted { color: $muted; }
+.btn       { @include button("solid"); }
+.btn-ghost { @include button("ghost"); }
+.breadcrumbs .sep { margin-inline: 0.5rem; }
+
+.grid {
+  display: grid; gap: 20px;
+  &--3 { grid-template-columns: repeat(1,1fr);
+    @media (min-width: 640px){ grid-template-columns: repeat(2,1fr); }
+    @media (min-width: 1024px){ grid-template-columns: repeat(3,1fr); }
+  }
+}
