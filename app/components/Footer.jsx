@@ -61,7 +61,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  reza.abdolahi@gmail.com
+                  reza@robotsaz.com
                 </a>
               </li>
               <li>777 Fort St, Victoria BC</li>

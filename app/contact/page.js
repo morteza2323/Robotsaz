@@ -7,7 +7,7 @@ export const metadata = {
 
 const COMPANY = {
   name: "Robotsaz Green Industry Inc.",
-  email: "reza.abdolahi@gmail.com",
+  email: "reza@robotsaz.com",
   addressText: "777 Fort Street, Victoria, BC V8W 1G9, Canada",
   mapsQuery: "777 Fort Street, Victoria, BC V8W 1G9, Canada",
   youtube: "https://www.youtube.com/@robotsaz",
